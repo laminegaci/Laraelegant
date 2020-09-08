@@ -43,5 +43,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // import './perfect-scrollbar.jquery.min.js';
 // import './waves.js';
 // import './sidebarmenu.js';
-import './custom.min.js';
+//import './custom.min.js';
 // import './dashboard1.js';
