@@ -71,7 +71,7 @@
 
 
         <footer class="footer">
-            © 2018 Elegent Admin by wrappixel.com
+            <!-- © 2018 Elegent Admin by wrappixel.com -->
         </footer>
     </div>
 

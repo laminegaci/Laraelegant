@@ -1,6 +1,8 @@
 <aside class="left-sidebar">
     <div class="d-flex no-block nav-text-box align-items-center">
-        <span><img src="{{ asset('images/logo-icon.png') }}" alt="elegant admin template"></span>
+        <span>
+            <img src="{{ asset('images/logo-100.png') }}" alt="homepage" class="dark-logo" style="width:70%;" />
+        </span>
         <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
         <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
     </div>

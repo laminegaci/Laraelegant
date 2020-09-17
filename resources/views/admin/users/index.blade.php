@@ -30,7 +30,6 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Basic Table</h4>
-                <h6 class="card-subtitle">Add class <code>.table</code></h6>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -56,18 +55,6 @@
                                     <a href="{{ route('users.show', '1') }}"><span class="label label-danger">delete</span></a>
                                 </td>
 
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Deshmukh</td>
-                                <td>Gaylord</td>
-                                <td>@Ritesh</td>
-                                <td><span class="label label-info">member</span> </td>
-                                <td>
-                                    <a href="{{ route('users.show', '1') }}"><span class="label label-success">show</span></a>
-                                    <a href="{{ route('users.show', '1') }}"><span class="label label-warning">update</span></a>
-                                    <a href="{{ route('users.show', '1') }}"><span class="label label-danger">delete</span></a>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
