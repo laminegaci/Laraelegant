@@ -21,33 +21,43 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form method="POST" action="{{ route('users.store') }}">
+                    @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">First Name</label>
-                        <input type="text" class="form-control" id="exampleInputFirst-Name" aria-describedby="" placeholder="Enter First Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Last Name</label>
-                        <input type="text" class="form-control" id="exampleInputLast-Name" aria-describedby="" placeholder="Enter Last Name">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="exampleInputFirst-Name" aria-describedby="" placeholder="Enter Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Role</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="js-example-placeholder-single js-states form-control" name="role" id="exampleFormControlSelect1">
                             <option value="1">Admin</option>
                             <option value="0">User</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Avatar</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" name="avatar" value="{{ old('avatar') }}" id="exampleFormControlFile1">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" name="password_confirmation" id="exampleInputPasswordConfirmation" placeholder="Confirm Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -55,4 +65,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(".js-example-placeholder-single").select2({
+        placeholder: "Select a state",
+        allowClear: true
+    });
+</script>
 @endsection

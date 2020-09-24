@@ -25,6 +25,16 @@
     <link href="{{ asset('icons/themify-icons/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('icons/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
+    <!-- toastr css -->
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+
+    <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,6 +89,17 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
+
+    <!-- datatable -->
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    <!-- select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <!-- toastr js -->
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+
+    @yield('scripts')
     <!-- <script>
             $('document').ready(function() {
                 alert('ok');

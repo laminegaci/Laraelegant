@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Session;
 
 class UsersController extends Controller
 {
@@ -13,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -34,7 +37,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:App\User,email',
+            'password' => 'required|confirmed',
+        ]);
+        User::create($request->all());
+        Session::flash('success', 'you succesfully created a user.');
+
+        return redirect()->route('users.index');
     }
 
     /**

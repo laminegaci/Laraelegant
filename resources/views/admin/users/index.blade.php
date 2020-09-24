@@ -31,24 +31,26 @@
             <div class="card-body">
                 <h4 class="card-title">Basic Table</h4>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+
+                                <th>Email</th>
                                 <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @foreach($users as $user)
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Deshmukh</td>
-                                <td>Prohaska</td>
-                                <td>@Genelia</td>
-                                <td><span class="label label-info">admin</span> </td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+
+                                <td>{{ $user->email }}</td>
+                                <td><span class="label label-info">{{ $user->role }}</span></td>
+
                                 <td>
                                     <a href="{{ route('users.show', '1') }}"><span class="label label-success">show</span></a>
                                     <a href="{{ route('users.show', '1') }}"><span class="label label-warning">update</span></a>
@@ -57,6 +59,7 @@
 
                             </tr>
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -66,5 +69,22 @@
 <!-- ============================================================== -->
 <!-- End PAge Content -->
 <!-- ============================================================== -->
+
+@endsection
+
+@section('scripts')
+
+@if(Session::has('success'))
+<script>
+    //sweetalert
+    swal("Good job!", "{{ Session::get('success') }}", "success");
+</script>
+@endif
+<script>
+    //datatable
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 
 @endsection
