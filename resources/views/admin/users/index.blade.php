@@ -31,7 +31,7 @@
             <div class="card-body">
                 <h4 class="card-title">Basic Table</h4>
                 <div class="table-responsive">
-                    <table class="table" id="myTable">
+                    <table id="myTable" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -39,17 +39,20 @@
 
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>avatar</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        @foreach($users as $user)
+
                         <tbody>
+                            @foreach($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
 
                                 <td>{{ $user->email }}</td>
                                 <td><span class="label label-info">{{ $user->role }}</span></td>
+                                <td>{{ $user->avatar }}</td>
 
                                 <td>
                                     <a href="{{ route('users.show', '1') }}"><span class="label label-success">show</span></a>
@@ -58,8 +61,9 @@
                                 </td>
 
                             </tr>
+                            @endforeach
                         </tbody>
-                        @endforeach
+
                     </table>
                 </div>
             </div>

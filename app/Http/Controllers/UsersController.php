@@ -42,6 +42,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|unique:App\User,email',
             'password' => 'required|confirmed',
+            'avatar' => 'image',
         ]);
         User::create($request->all());
         Session::flash('success', 'you succesfully created a user.');
