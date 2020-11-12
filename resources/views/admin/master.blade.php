@@ -18,15 +18,15 @@
     <!--c3 plugins CSS -->
     <!-- <link href="../assets/node_modules/c3-master/c3.min.css" rel="stylesheet"> -->
     <!-- Custom CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('_admin/css/app.css') }}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
-    <link href="{{ asset('css/pages/dashboard1.css') }}" rel="stylesheet">
+    <link href="{{ asset('_admin/css/pages/dashboard1.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('icons/themify-icons/themify-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('icons/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('_admin/icons/themify-icons/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('_admin/icons/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- toastr css -->
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('_admin/css/toastr.min.css') }}">
 
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -65,7 +65,7 @@
 
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="min-height: 580px; !important">
 
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -80,38 +80,36 @@
         <!-- End Page wrapper  -->
 
 
-        <footer class="footer">
+        {{-- <footer class="footer">
             <!-- © 2018 Elegent Admin by wrappixel.com -->
-        </footer>
+        </footer> --}}
     </div>
 
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/custom.min.js') }}"></script>
-    <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
-
+    <script src="{{ asset('_admin/js/app.js') }}"></script>
+    <script src="{{ asset('_admin/js/custom.min.js') }}"></script>
+    <script src="{{ asset('_admin/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('_admin/js/toastr.min.js') }}"></script>
+    
     <!-- datatable -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-    <!-- toastr js -->
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-
     @yield('scripts')
-    <!-- <script>
+    {{-- <script>
             $('document').ready(function() {
                 alert('ok');
             })
-        </script> -->
+        </script> --}}
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <!-- <script src="dist/js/perfect-scrollbar.jquery.min.js"></script> -->
     <!--Wave Effects -->
     <!-- <script src="dist/js/waves.js"></script> -->
-    <!--Menu sidebar -->
-    <!-- <script src="dist/js/sidebarmenu.js"></script> -->
+    {{-- Menu sidebar --}}
+    {{-- <script src="dist/js/sidebarmenu.js"></script>  --}}
     <!--Custom JavaScript -->
     <!-- <script src="dist/js/custom.min.js"></script> -->
     <!-- ============================================================== -->
@@ -122,10 +120,10 @@
     <!-- <script src="../assets/node_modules/raphael/raphael-min.js"></script>
         <script src="../assets/node_modules/morrisjs/morris.min.js"></script>
         <script src="../assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
-        
+
         <script src="../assets/node_modules/d3/d3.min.js"></script>
         <script src="../assets/node_modules/c3-master/c3.min.js"></script>
-    
+
         <script src="dist/js/dashboard1.js"></script> -->
 </body>
 
