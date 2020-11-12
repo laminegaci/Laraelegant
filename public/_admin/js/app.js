@@ -37614,27 +37614,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!******************************************************************************************************************!*\
-  !*** multi ./resources/js/admin_scripts/app.js ./resources/sass/admin_styles/app.scss ./resources/sass/app.scss ***!
-  \******************************************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** multi ./resources/js/admin_scripts/app.js ./resources/sass/admin_styles/app.scss ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\info-pc\Desktop\Laraelegant\resources\js\admin_scripts\app.js */"./resources/js/admin_scripts/app.js");
-__webpack_require__(/*! C:\Users\info-pc\Desktop\Laraelegant\resources\sass\admin_styles\app.scss */"./resources/sass/admin_styles/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\info-pc\Desktop\Laraelegant\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\info-pc\Desktop\Laraelegant\resources\sass\admin_styles\app.scss */"./resources/sass/admin_styles/app.scss");
 
 
 /***/ })
