@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardControler@index')->name('dashboard');
     Route::resource('users', 'Admin\UsersController');
 });

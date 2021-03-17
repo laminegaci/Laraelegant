@@ -1,0 +1,67 @@
+/*
+Template Name: Admin Template
+Author: Wrappixel
+
+File: scss
+*/
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700");
+/*Theme Colors*/
+/**
+ * Table Of Content
+ *
+ * 	1. Color system
+ *	2. Options
+ *	3. Body
+ *	4. Typography
+ *	5. Breadcrumbs
+ *	6. Cards
+ *	7. Dropdowns
+ *	8. Buttons
+ *	9. Typography
+ *	10. Progress bars
+ *	11. Tables
+ *	12. Forms
+ *	14. Component
+ */
+/*******************
+Table Cell
+*******************/
+.table-box {
+  display: table;
+  width: 100%;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table thead th,
+.table th {
+  font-weight: 500;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.lite-padding td {
+  padding: 5px;
+}
+
+.v-middle td,
+.v-middle th {
+  vertical-align: middle;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background: #f8f9fa;
+}
+/*# sourceMappingURL=table-pages.css.map */

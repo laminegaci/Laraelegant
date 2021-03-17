@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAAA;;;;;EAKE;ACHF,OAAO,CAAC,wEAAI;AACZ,gBAAgB;AAehB;;;;;;;;;;;;;;;;GAgBG;ADzBH;;mBAEmB;AAEnB,AAAA,WAAW,CAAC,CAAC,AAAA,gBAAgB,AAAA,MAAM,CAAC;EAChC,UAAU,EC4BH,OAAO;CD3BjB;;AAED,AAAA,gBAAgB,AAAA,OAAO;AACvB,WAAW,CAAC,gBAAgB,AAAA,OAAO,AAAA,MAAM,CAAC;EACtC,UAAU,ECfD,OAAO;EDgBhB,YAAY,EChBH,OAAO;CDiBnB;;AAED,AAAA,gBAAgB,AAAA,SAAS,CAAC;EACtB,KAAK,ECqBE,OAAO;EDpBd,UAAU,ECiBH,OAAO;CDhBjB;;AAED,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,GAAG,CAAC,KAAK,CCaV,OAAO;EDZd,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "../../resources/sass/admin_styles/pages/other-pages.scss",
+        "../../resources/sass/admin_styles/variable.scss"
+    ],
+    "names": [],
+    "file": "other-pages.css"
+}

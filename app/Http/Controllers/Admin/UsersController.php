@@ -45,7 +45,9 @@ class UsersController extends Controller
             'password' => 'required|confirmed',
             'avatar' => 'image',
         ]);
-        User::create($request->all());
+        $data = $request->all();
+        $data['password'] = bcrypt(request('password'));
+        User::create($data);
         Session::flash('success', 'you succesfully created a user.');
 
         return redirect()->route('users.index');

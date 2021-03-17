@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAAA;;;;;EAKE;ACHF,OAAO,CAAC,wEAAI;AACZ,gBAAgB;AAehB;;;;;;;;;;;;;;;;GAgBG;AD1BH;;iEAEiE;AAEjE,AACI,WADO,CACP,gBAAgB;AADpB,WAAW,CAEP,gBAAgB,CAAC,CAAC,CAAC;EACf,KAAK,ECyBF,IAAI;CDrBV;;AAPL,AAIQ,WAJG,CACP,gBAAgB,AAGX,OAAO;AAJhB,WAAW,CAEP,gBAAgB,CAAC,CAAC,AAEb,OAAO,CAAC;EACL,OAAO,EAAE,GAAG;CACf;;AANT,AAQI,WARO,CAQP,gBAAgB,GAAC,gBAAgB,AAAA,QAAQ,CAAC;EACtC,KAAK,EAAE,wBAAwB;CAClC;;AAGL,AAAA,WAAW,CAAC;EACR,aAAa,EAAE,GAAG;CACrB",
+    "sources": [
+        "../../resources/sass/admin_styles/pages/breadcrumb-page.scss",
+        "../../resources/sass/admin_styles/variable.scss"
+    ],
+    "names": [],
+    "file": "breadcrumb-page.css"
+}

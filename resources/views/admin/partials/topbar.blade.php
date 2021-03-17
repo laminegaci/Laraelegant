@@ -8,7 +8,7 @@
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{ asset('_admin/images/logo-100.png') }}" alt="homepage" class="dark-logo" style="width:70%;" />
+                    <img src="{{ asset('_admin/images/logo-icon.png') }}" alt="homepage" class="dark-logo" style="width:70%;" />
                     <!-- Light Logo icon -->
                     <img src="{{ asset('_admin/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
                 </b>
@@ -49,6 +49,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" >
+                            {{ __('Setings') }}
+                        </a>
+                        <a class="dropdown-item" href="#" >
+                            {{ __('Profile') }}
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -60,7 +66,7 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('_admin/images/users/'.Auth::user()->avatar) }}" alt="user" class="img-circle" width="30"></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('_admin/images/users/'.Auth::user()->avatar) }}" alt="user_avatar" class="img-circle" width="30"></a>
                 </li>
 
                 <!-- ============================================================== -->

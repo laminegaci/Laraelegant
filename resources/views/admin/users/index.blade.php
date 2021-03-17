@@ -81,7 +81,11 @@
 @if(Session::has('success'))
 <script>
     //sweetalert
-    swal("Good job!", "{{ Session::get('success') }}", "success");
+    swal({
+        title: "Good job!",
+        text: "{{ Session::get('success') }}",
+        icon: "success",
+    });
 </script>
 @endif
 <script>
