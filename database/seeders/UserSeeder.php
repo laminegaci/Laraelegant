@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('123456'),
                 'avatar' => 'images/users/5.jpg',
-                'role_id'     => 0,
+                'role_id'     => '2',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),

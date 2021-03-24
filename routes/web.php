@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardControler@index')->name('dashboard');
     Route::resource('users', 'Admin\UsersController');
-    Route::resource('roles', 'Admin\UsersController');
+    Route::resource('roles', 'Admin\RolesController');
 });
 
 Auth::routes();

@@ -11,10 +11,10 @@
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active">Users</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="{{ route('roles.index') }}">Roles</a></li>
             </ol>
-            <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
+            <a href="{{ route('roles.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
         </div>
     </div>
 </div>
@@ -35,28 +35,24 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>First Name</th>
-
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>avatar</th>
+                                <th>Name</th>
+                                <th>users</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($roles as $role)
                             <tr>
-                                <input type="hidden" class="serdelete_val_id" value="{{ $user->id }}">
-                                <td>{{ $user->id }}</td>
-                                <td class="serdelete_name_user">{{ $user->name }}</td>
-
-                                <td>{{ $user->email }}</td>
-                                <td><span class="label label-info">{{ $user->role['name'] }}</span></td>
-                                <td><img src="{{ asset('_admin/'.$user->avatar) }}" alt="user_avatar" class="img-circle" width="30"></td>
-
+                                <input type="hidden" class="serdelete_val_id" value="{{ $role->id }}">
+                                <td>{{ $role->id }}</td>
+                                
+                                <td class="serdelete_name_role">{{ $role->name }}</td>
                                 <td>
-                                    <a href="{{ route('users.show', $user->id ) }}"><span class="label label-success">show</span></a>
+                                    {{ $role->users_count }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('roles.show', $role->id ) }}"><span class="label label-success">show</span></a>
                                     {{-- <a href="{{ route('users.show', '1') }}"><span class="label label-warning">update</span></a> --}}
                                     {{-- <a href="{{ route('users.destroy', $user->id) }}" ><span class="label label-danger">deleteos</span></a> --}}
                                     <a href="" onclick="event.preventDefault();">
@@ -131,11 +127,11 @@
         $('.servideletebtn').click(function (e) {
             e.preventDefault();
             var delete_id = $(this).closest("tr").find('.serdelete_val_id').val();
-            var delete_user = $(this).closest("tr").find('.serdelete_name_user').text();
-            //alert(delete_id);
+            var delete_role = $(this).closest("tr").find('.serdelete_name_role').text();
+            //alert(delete_role);
             swal({
                 title: "Are you sure ?",
-                text: "You want to delete "+ delete_user,
+                text: "You want to delete "+ delete_role,
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -148,7 +144,7 @@
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: '/admin/users/'+delete_id,
+                            url: '/admin/roles/'+delete_id,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

@@ -38,9 +38,9 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Role</label>
-                        <select class="js-example-placeholder-single js-states form-control" name="role" id="exampleFormControlSelect1">
+                        <select class="js-example-placeholder-single js-states form-control" name="role_id" id="exampleFormControlSelect1">
                             <option value="1">Admin</option>
-                            <option value="0">User</option>
+                            <option value="2">User</option>
                         </select>
                     </div>
                     <div class="form-group">

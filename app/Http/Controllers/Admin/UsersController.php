@@ -61,8 +61,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        dd($user);
+        $user = User::with('role')->findOrFail($id);
+        //dd($user);
         return view('admin.users.show', compact('user'));
     }
 
@@ -108,7 +108,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $item = $item = User::findOrFail($id);
+        $item = User::findOrFail($id);
         //dd($item);
         User::destroy($id);
         return response()->json(['status'=>$item->name.' has been deleted! ']);

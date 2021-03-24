@@ -12,8 +12,8 @@
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                 <li class="breadcrumb-item active">{{ Auth::user()->name }}</li>
             </ol>
 
@@ -34,13 +34,11 @@
             <div class="card-body">
                 <center class="m-t-30"> <img src="{{ asset('_admin/'.$user->avatar) }}" class="img-circle" width="150" />
                     <h4 class="card-title m-t-10">{{ $user->name }}</h4>
-                        @if (auth()->user()->isAdmin())
+                      
                             <div>
-                                <h6 class="card-subtitle">Admin</h6>
+                                <h6 class="card-subtitle">{{ $user->role->name }}</h6>
                             </div>
-                        @else
-                            <h6 class="card-subtitle">User</h6>
-                        @endif
+                  
                     {{-- <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
                     <div class="row text-center justify-content-md-center">
                         <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i>
@@ -83,9 +81,9 @@
                     <div class="form-group">
                         <label for="example-Role" class="col-md-12">Role</label>
                         <div class="col-md-12">
-                            <select class="form-control" name="role" id="exampleFormControlSelect1">
-                                <option value="1">Admin</option>
-                                <option value="0">User</option>
+                            <select class="form-control" name="role_id" id="exampleFormControlSelect1">
+                                <option value="1" {{ ($user->role->name == 'admin') ? 'selected' : ''  }} >Admin</option>
+                                <option value="2" {{ ($user->role->name == 'user') ? 'selected' : ''  }}>User</option>
                             </select>
                         </div>
                         
@@ -118,6 +116,38 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button class="btn btn-success">Update Profile</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <!-- Tab panes -->
+            <div class="card-body">
+                <form class="form-horizontal form-material" method="POST" action="{{ route('users.update', $user->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="example-name" class="col-md-12">Current Password</label>
+                        <div class="col-md-12">
+                            <input type="text" name="name" placeholder="" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">New Password</label>
+                        <div class="col-md-12">
+                            <input type="email" name="email"  placeholder=""  class="form-control form-control-line" id="example-email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">Confirm Password</label>
+                        <div class="col-md-12">
+                            <input type="email" name="email"  placeholder=""  class="form-control form-control-line" id="example-email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button class="btn btn-success">Update Password</button>
                         </div>
                     </div>
                 </form>

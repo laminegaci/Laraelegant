@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Role;
+use Session;
 
 class RolesController extends Controller
 {
@@ -14,7 +16,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::withCount('users')->get();
+        //dd($roles);
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -25,7 +28,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create');
     }
 
     /**
@@ -36,7 +39,15 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $data = $request->all();
+        Role::create($data);
+        Session::flash('success_store', 'you succesfully created a Role.');
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -47,7 +58,10 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::with('users')->findOrFail($id);
+        $role_users = Role::find($id)->users;
+        //dd($role);
+        return view('admin.roles.show', compact('role','role_users'));
     }
 
     /**
@@ -70,7 +84,16 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $item = Role::findOrFail($id);
+        $data = $request->all();
+        $item->update($data);
+        Session::flash('success_update', 'you succesfully updated a role.');
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -81,6 +104,10 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         //dd($id);
+         $item = Role::findOrFail($id);
+         //dd($item);
+         Role::destroy($id);
+         return response()->json(['status'=>$item->name.' has been deleted! ']);
     }
 }
