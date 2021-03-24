@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAEA,OAAO,CAAC,wEAAI;AACZ,gBAAgB;AAehB;;;;;;;;;;;;;;;;GAgBG",
-    "sources": [
-        "../../resources/sass/admin_styles/variable.scss"
-    ],
-    "names": [],
-    "file": "variable.css"
-}

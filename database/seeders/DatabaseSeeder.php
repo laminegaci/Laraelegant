@@ -1,6 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        
+        //\App\Models\User::factory(10)->create();
+        $this->call([UserSeeder::class]);
+        $this->call([RoleSeeder::class]);
+
     }
 }

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'role'
+        'name', 'email', 'password', 'avatar', 'role_id'
     ];
 
     /**
@@ -42,10 +42,19 @@ class User extends Authenticatable
     | Attributes
     |------------------------------------------------------------------------------------
     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 
 
     public function setAvatarAttribute($value)
     {
         $this->attributes['avatar'] = request('avatar')->storeAs('images', time() . '_' . request('avatar')->getClientOriginalName());
     }
+
+    public function isAdmin()
+    {
+        return $this->role == '1';
+    }   
 }

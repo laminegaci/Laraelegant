@@ -48,7 +48,7 @@ class UsersController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt(request('password'));
         User::create($data);
-        Session::flash('success', 'you succesfully created a user.');
+        Session::flash('success_store', 'you succesfully created a user.');
 
         return redirect()->route('users.index');
     }
@@ -61,7 +61,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('admin.users.show');
+        $user = User::findOrFail($id);
+        dd($user);
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -84,7 +86,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         //dd($request->all());
+         $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        $item = User::findOrFail($id);
+        $data = $request->all();
+        $item->update($data);
+        Session::flash('success_update', 'you succesfully updated a user.');
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -95,6 +107,14 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        $item = $item = User::findOrFail($id);
+        //dd($item);
+        User::destroy($id);
+        return response()->json(['status'=>$item->name.' has been deleted! ']);
+
+        // Session::flash('success_destroy', 'you succesfully deleted a user.');
+
+        // return redirect()->route('users.index');
     }
 }

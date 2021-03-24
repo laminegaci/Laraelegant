@@ -66,7 +66,7 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('_admin/images/users/'.Auth::user()->avatar) }}" alt="user_avatar" class="img-circle" width="30"></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('_admin/'.Auth::user()->avatar) }}" alt="user_avatar" class="img-circle" width="30"></a>
                 </li>
 
                 <!-- ============================================================== -->
