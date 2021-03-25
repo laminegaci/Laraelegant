@@ -36,7 +36,11 @@
                     <h4 class="card-title m-t-10">{{ $user->name }}</h4>
                       
                             <div>
-                                <h6 class="card-subtitle">{{ $user->role->name }}</h6>
+                                <h6 class="card-subtitle">
+                                    @foreach ($user->roles as $role)
+                                        {{ $role->name }}
+                                    @endforeach
+                                </h6>
                             </div>
                   
                     {{-- <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
@@ -82,8 +86,8 @@
                         <label for="example-Role" class="col-md-12">Role</label>
                         <div class="col-md-12">
                             <select class="form-control" name="role_id" id="exampleFormControlSelect1">
-                                <option value="1" {{ ($user->role->name == 'admin') ? 'selected' : ''  }} >Admin</option>
-                                <option value="2" {{ ($user->role->name == 'user') ? 'selected' : ''  }}>User</option>
+                                <option value="1" {{ $user->roles->pluck('name')->contains('admin') ? 'selected' : '' }}>Admin</option>
+                                <option value="2" {{ $user->roles->pluck('name')->contains('user') ? 'selected' : '' }}>User</option>
                             </select>
                         </div>
                         

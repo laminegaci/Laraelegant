@@ -52,7 +52,11 @@
                                 <td class="serdelete_name_user">{{ $user->name }}</td>
 
                                 <td>{{ $user->email }}</td>
-                                <td><span class="label label-info">{{ $user->role['name'] }}</span></td>
+                                <td><span class="label label-info">
+                                @foreach ($user->roles as $role)
+                                    {{ $role->name }}
+                                @endforeach    
+                                </span></td>
                                 <td><img src="{{ asset('_admin/'.$user->avatar) }}" alt="user_avatar" class="img-circle" width="30"></td>
 
                                 <td>

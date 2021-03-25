@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\User;
 use Session;
+use App\Role;
+use App\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -16,7 +18,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('roles')->get();
+        //dd($size);
         return view('admin.users.index', compact('users'));
     }
 
@@ -61,8 +64,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('role')->findOrFail($id);
+        $user = User::with('roles')->findOrFail($id);
         //dd($user);
+        //dd(Auth::user()->roles->pluck('name')->contains('admin'));
         return view('admin.users.show', compact('user'));
     }
 

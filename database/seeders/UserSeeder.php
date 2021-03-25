@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use App\Role;
 use App\User;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -25,7 +28,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('123456'),
                 'avatar' => 'images/users/5.jpg',
-                'role_id' => '1',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),              
@@ -38,12 +40,28 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('123456'),
                 'avatar' => 'images/users/5.jpg',
-                'role_id'     => '2',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
         User::insert($data);
+
+        for ($i = 1; $i <= 1 ; $i++) {
+            DB::table('role_user')->insert([
+                'role_id'     => '1',
+                'user_id'     => '1',
+            ]);
+        }
+        $users_id = User::pluck('id')->toArray();
+        $roles_id = Role::pluck('id')->toArray();
+        $size = count($users_id);
+        for ($i = 2; $i <= $size ; $i++) {
+            DB::table('role_user')->insert([
+                'role_id'     => $faker->randomElement($roles_id),
+                'user_id'     => $i,
+            ]);
+        }
+        
     }
 }
