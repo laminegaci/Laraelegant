@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'updated_at' => now(),              
             ]);
         }
-        for ($i = 1; $i <= 10 ; $i++) {
+        for ($i = 1; $i <= 5 ; $i++) {
             array_push($data, [
                 'name'     => $faker->name(),
                 'email'    => $faker->email,

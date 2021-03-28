@@ -19,7 +19,6 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::with('roles')->get();
-        //dd($size);
         return view('admin.users.index', compact('users'));
     }
 
@@ -30,7 +29,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -50,7 +51,11 @@ class UsersController extends Controller
         ]);
         $data = $request->all();
         $data['password'] = bcrypt(request('password'));
-        User::create($data);
+        $roleId = $request->input('role_id');
+        
+        $user = User::create($data);
+        $user->roles()->attach($roleId);
+
         Session::flash('success_store', 'you succesfully created a user.');
 
         return redirect()->route('users.index');
