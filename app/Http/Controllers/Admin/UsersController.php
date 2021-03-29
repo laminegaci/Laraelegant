@@ -100,9 +100,14 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required',
         ]);
-        $item = User::findOrFail($id);
+        $user = User::findOrFail($id);
         $data = $request->all();
-        $item->update($data);
+        $user->update($data);
+
+        $roleId = $request->input('role_id');
+        $user->roles()->sync($roleId);
+        //$user->roles()->updateExistingPivot($roleId, ['role_id' => $roleId]);
+
         Session::flash('success_update', 'you succesfully updated a user.');
 
         return redirect()->route('users.index');
