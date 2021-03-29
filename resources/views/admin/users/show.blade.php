@@ -86,8 +86,9 @@
                         <label for="example-Role" class="col-md-12">Role</label>
                         <div class="col-md-12">
                             <select class="form-control" name="role_id" id="exampleFormControlSelect1">
-                                <option value="1" {{ $user->roles->pluck('name')->contains('admin') ? 'selected' : '' }}>Admin</option>
-                                <option value="2" {{ $user->roles->pluck('name')->contains('user') ? 'selected' : '' }}>User</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         

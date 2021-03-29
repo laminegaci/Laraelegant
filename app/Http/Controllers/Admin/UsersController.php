@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Role;
-use App\User;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +45,7 @@ class UsersController extends Controller
         //dd($request->all());
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:App\User,email',
+            'email' => 'required|unique:App\Models\User,email',
             'password' => 'required|confirmed',
             'avatar' => 'image',
         ]);
@@ -69,10 +69,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $roles = Role::all();
         $user = User::with('roles')->findOrFail($id);
         //dd($user);
         //dd(Auth::user()->roles->pluck('name')->contains('admin'));
-        return view('admin.users.show', compact('user'));
+        return view('admin.users.show', compact('user','roles'));
     }
 
     /**
