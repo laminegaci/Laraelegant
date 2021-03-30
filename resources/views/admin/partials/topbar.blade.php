@@ -52,7 +52,7 @@
                         <a class="dropdown-item" href="#" >
                             {{ __('Setings') }}
                         </a>
-                        <a class="dropdown-item" href="#" >
+                        <a class="dropdown-item" href="{{ route('users.show',Auth::user()->id) }}" >
                             {{ __('Profile') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -66,7 +66,7 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('_admin/'.Auth::user()->avatar) }}" alt="user_avatar" class="img-circle" width="30"></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('storage/'.Auth::user()->avatar) }}" alt="user_avatar" class="img-circle" width="30"></a>
                 </li>
 
                 <!-- ============================================================== -->

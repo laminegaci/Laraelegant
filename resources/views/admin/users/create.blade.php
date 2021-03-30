@@ -33,11 +33,11 @@
                 <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Username</label>
+                        <label for="exampleInputUsername">Username</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="exampleInputFirst-Name" aria-describedby="" placeholder="Enter Name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Role</label>
+                        <label for="exampleSelectRole">Role</label>
                         <select class="js-example-placeholder-single js-states form-control" name="role_id" id="exampleFormControlSelect1">
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -45,19 +45,19 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Avatar</label>
-                        <input type="file" class="form-control-file" name="avatar" value="{{ old('avatar') }}" id="exampleFormControlFile1">
+                        <label for="exampleFormControlAvatar">Avatar</label>
+                        <input type="file" class="form-control-file" name="avatar" value="{{ old('avatar') }}" id="avatar">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail">Email address</label>
                         <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="exampleInputPassword">Password</label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <label for="exampleInputPassword_confirm">Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation" id="exampleInputPasswordConfirmation" placeholder="Confirm Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

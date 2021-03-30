@@ -11,8 +11,8 @@
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active">Users</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="{{ route('users.index') }}">Users</a></li>
             </ol>
             <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
         </div>
@@ -57,7 +57,7 @@
                                     {{ $role->name }}
                                 @endforeach    
                                 </span></td>
-                                <td><img src="{{ asset('_admin/'.$user->avatar) }}" alt="user_avatar" class="img-circle" width="30"></td>
+                                <td><img src="{{ asset('storage/'.$user->avatar) }}" alt="user_avatar" class="img-circle" width="30"></td>
 
                                 <td>
                                     <a href="{{ route('users.show', $user->id ) }}"><span class="label label-success">show</span></a>
@@ -67,7 +67,7 @@
                                        
                                             <button class="servideletebtn" type="submit" style="border: none;background:transparent;color:red;">
                                                 <i class="fas fa-trash"></i>
-                                            </button>
+                                            </button>   
 
                                     </a>
                                 </td>
@@ -91,7 +91,16 @@
 @endsection
 
 @section('scripts')
-
+@if(Session::has('success_updateavatar'))
+<script>
+    //sweetalert
+    swal({
+        title: "Good job!",
+        text: "{{ Session::get('success_updateavatar') }}",
+        icon: "success",
+    });
+</script>
+@endif
 @if(Session::has('success_store'))
 <script>
     //sweetalert

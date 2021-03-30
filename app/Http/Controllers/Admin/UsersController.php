@@ -132,4 +132,26 @@ class UsersController extends Controller
 
         // return redirect()->route('users.index');
     }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateavatar(Request $request, $id)
+    {
+        $request->validate([
+            'avatar' => 'required|image',
+        ]);
+        $user = User::findOrFail($id);
+        $path = $request->avatar->storeAs('images/users', time() . '_' . request('avatar')->getClientOriginalName());
+        $user->avatar = $path;
+        $user->save();       
+
+        Session::flash('success_updateavatar', 'you succesfully updated '. $user->name .' avatar.');
+
+        return redirect()->route('users.show', $user->id);
+    }
+
 }

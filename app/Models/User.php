@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function setAvatarAttribute($value)
     {
-        $this->attributes['avatar'] = request('avatar')->storeAs('images', time() . '_' . request('avatar')->getClientOriginalName());
+        $this->attributes['avatar'] = request('avatar')->storeAs('images/users', time() . '_' . request('avatar')->getClientOriginalName());
     }
 
     public function isAdmin()

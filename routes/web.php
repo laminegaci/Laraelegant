@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardControler@index')->name('dashboard');
     Route::resource('users', 'Admin\UsersController');
+    Route::PUT('users/updateavatar/{id}', 'Admin\UsersController@updateavatar')->name('users.updateavatar');
     Route::resource('roles', 'Admin\RolesController');
 });
 
