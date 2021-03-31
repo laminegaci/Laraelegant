@@ -60,4 +60,16 @@ class User extends Authenticatable
     {
         return $this->role == '1';
     }   
+
+    public function hasAnyRole(string $role){
+        $collection = $this->roles()->pluck('name');
+        if($collection->contains($role)){
+            return true;
+        };
+        return null;
+        //return null !== $this->roles()->pluck('name')->contains($role);
+    }
+    public function hasAnyRoles(array $role){
+        return null !== $this->roles()->whereIn('name','$role')->first();
+    }
 }

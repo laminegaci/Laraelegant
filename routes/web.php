@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    //dd(User::has('roles')->get());
+    // $users = User::whereHas('roles', function($query) {
+    //     $query->where('name','admin');
+    // })->get();
+    $collection = Auth::user()->roles()->pluck('name');
+    dd($collection->contains('user'));
+
+
 });
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {

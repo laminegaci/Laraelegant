@@ -108,7 +108,7 @@ svg {
     <p>Page forbiden</p>
     <div class="buttons-con">
         <div class="action-link-wrap">
-        <a href="{{ route('index') }}" class="link-button">This side is for admins</a>
+        <a href="{{ route('dashboard') }}" class="link-button">This side is for admins</a>
         </div>
     </div>
     </div>

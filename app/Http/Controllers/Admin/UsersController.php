@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UsersController extends Controller
 {
@@ -18,8 +19,12 @@ class UsersController extends Controller
      */
     public function index()
     {
+        //dd(Auth::user()->roles);
+        //dd(Auth::user()->roles()->where('name','admin')->first());
         $users = User::with('roles')->get();
         return view('admin.users.index', compact('users'));
+        
+        
     }
 
     /**
@@ -29,6 +34,9 @@ class UsersController extends Controller
      */
     public function create()
     {
+        if (! Gate::allows('users_create')) {
+            abort('403');
+        }
         $roles = Role::all();
 
         return view('admin.users.create', compact('roles'));
@@ -42,6 +50,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('users_create')) {
+            abort('403');
+        }
         //dd($request->all());
         $request->validate([
             'name' => 'required',
@@ -71,8 +82,7 @@ class UsersController extends Controller
     {
         $roles = Role::all();
         $user = User::with('roles')->findOrFail($id);
-        //dd($user);
-        //dd(Auth::user()->roles->pluck('name')->contains('admin'));
+        
         return view('admin.users.show', compact('user','roles'));
     }
 

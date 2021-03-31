@@ -14,7 +14,12 @@
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="{{ route('users.index') }}">Users</a></li>
             </ol>
+            @can('users_create')
             <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
+            @else
+            <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15" disabled> Add new</button></a>
+            @endcan
+            
         </div>
     </div>
 </div>
