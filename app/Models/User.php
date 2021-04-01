@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -47,7 +48,7 @@ class User extends Authenticatable
     */
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
 
@@ -62,7 +63,7 @@ class User extends Authenticatable
     }   
 
     public function hasAnyRole(string $role){
-        $collection = $this->roles()->pluck('name');
+        $collection = Auth::user()->roles()->pluck('name');
         if($collection->contains($role)){
             return true;
         };

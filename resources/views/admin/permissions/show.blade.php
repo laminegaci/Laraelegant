@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">permissions</a></li>
                 <li class="breadcrumb-item active">{{ Auth::user()->name }}</li>
             </ol>
 
@@ -33,7 +33,7 @@
         <div class="card">
             <div class="card-body">
                 <center class="m-t-30"> <img src="{{ asset('_admin/images/') }}" class="img-circle" alt="image" width="150" />
-                    <h4 class="card-title m-t-10">{{ $role->name }}</h4>
+                    <h4 class="card-title m-t-10">{{ $permission->name }}</h4>
                 </center>
             </div>
         </div>
@@ -44,28 +44,18 @@
         <div class="card">
             <!-- Tab panes -->
             <div class="card-body">
-                <form method="POST" action="{{ route('roles.update', $role->id) }}">
+                <form class="form-horizontal form-material" method="POST" action="{{ route('permissions.update', $permission->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="example-name" class="col-md-12">Full Name</label>
                         <div class="col-md-12">
-                            <input type="text" name="name" placeholder="{{$role->name}}" value="{{ $role->name }}" class="form-control form-control-line">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleSelectRole" class="col-md-12">Permissions</label>
-                        <div class="col-md-12">
-                            <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="permissions_id[]" id="exampleFormControlSelect1">
-                                @foreach($permissions as $permission)
-                                    <option value="{{ $permission->id }}">{{ $permission->name }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="name" placeholder="{{$permission->name}}" value="{{ $permission->name }}" class="form-control form-control-line">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button class="btn btn-success">Update Role</button>
+                            <button class="btn btn-success">Update permission</button>
                         </div>
                     </div>
                 </form>
@@ -75,22 +65,13 @@
             <!-- Tab panes -->
             <div class="card-body">
                 <ul>
-                    <h3>Pemissions for {{$role->name}}</h3>
-                    @foreach ($role_permissions as $permission)
+                    <h3>Roles have the Permission of {{ $permission->name }}</h3>
+                @foreach ($permission_roles as $permission)
+                    
                         <li>{{$permission->name}}</li>
-                    @endforeach
-                </ul>   
-            </div>
-        </div>
-        <div class="card">
-            <!-- Tab panes -->
-            <div class="card-body">
-                <ul>
-                    <h3>Users have the role of {{$role->name}}</h3>
-                    @foreach ($role_users as $user)
-                        <li>{{$user->name}}</li>
-                    @endforeach
-                </ul>
+                    
+                @endforeach
+            </ul>
             </div>
         </div>
     </div>
@@ -101,13 +82,4 @@
 <!-- End PAge Content -->
 <!-- ============================================================== -->
 
-@endsection
-
-@section('scripts')
-<script>
-    $(".js-example-basic-multiple").select2({
-        placeholder: "Select a permission",
-        allowClear: true
-    });
-</script>
 @endsection

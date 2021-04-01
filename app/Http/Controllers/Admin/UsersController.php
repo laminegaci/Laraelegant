@@ -23,8 +23,6 @@ class UsersController extends Controller
         //dd(Auth::user()->roles()->where('name','admin')->first());
         $users = User::with('roles')->get();
         return view('admin.users.index', compact('users'));
-        
-        
     }
 
     /**

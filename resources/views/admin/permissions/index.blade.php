@@ -6,15 +6,15 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Roles</h4>
+        <h4 class="text-themecolor">Permissions</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="{{ route('roles.index') }}">Roles</a></li>
+                <li class="breadcrumb-item active"><a href="{{ route('permissions.index') }}">permissions</a></li>
             </ol>
-            <a href="{{ route('roles.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
+            <a href="{{ route('permissions.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
         </div>
     </div>
 </div>
@@ -35,27 +35,19 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>users</th>
-                                <th>permissions</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($roles as $role)
+                            @foreach($permissions as $permission)
                             <tr>
-                                <input type="hidden" class="serdelete_val_id" value="{{ $role->id }}">
-                                <td>{{ $role->id }}</td>
+                                <input type="hidden" class="serdelete_val_id" value="{{ $permission->id }}">
+                                <td>{{ $permission->id }}</td>
                                 
-                                <td class="serdelete_name_role">{{ $role->name }}</td>
+                                <td class="serdelete_name_role">{{ $permission->name }}</td>
                                 <td>
-                                    {{ $role->users_count }}
-                                </td>
-                                <td>
-                                    {{ $role->permissions_count }}
-                                </td>
-                                <td>
-                                    <a href="{{ route('roles.show', $role->id ) }}"><span class="label label-success">show</span></a>
+                                    <a href="{{ route('permissions.show', $permission->id ) }}"><span class="label label-success">show</span></a>
                                     {{-- <a href="{{ route('users.show', '1') }}"><span class="label label-warning">update</span></a> --}}
                                     {{-- <a href="{{ route('users.destroy', $user->id) }}" ><span class="label label-danger">deleteos</span></a> --}}
                                     <a href="" onclick="event.preventDefault();">
@@ -147,7 +139,7 @@
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: '/admin/roles/'+delete_id,
+                            url: '/admin/permissions/'+delete_id,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

@@ -34,7 +34,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Basic Table</h4>
                 <div class="table-responsive">
                     <table id="myTable" class="display" style="width:100%">
                         <thead>

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Session;
-use App\Models\Role;
-use App\Models\Permission;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Permission;
+use Session;
 
-class RolesController extends Controller
+class PermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::withCount('users','permissions')->get();
+        $permissions = Permission::withCount('roles')->get();
         //dd($roles);
-        return view('admin.roles.index', compact('roles'));
+        return view('admin.permissions.index', compact('permissions'));
     }
 
     /**
@@ -29,8 +28,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::all();
-        return view('admin.roles.create', compact('permissions'));
+        return view('admin.permissions.create');
     }
 
     /**
@@ -46,15 +44,10 @@ class RolesController extends Controller
             'name' => 'required'
         ]);
         $data = $request->all();
-        $permissionsId = $request->input('permissions_id');
-        //dd($permissionsId);
-        $role = Role::create($data);
-        $role->permissions()->attach($permissionsId);
+        Permission::create($data);
+        Session::flash('success_store', 'you succesfully created a Permission.');
 
-
-        Session::flash('success_store', 'you succesfully created a Role.');
-
-        return redirect()->route('roles.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -65,12 +58,10 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = Role::findOrFail($id);
-        $role_users = Role::find($id)->users;
-        $role_permissions = Role::find($id)->permissions;
-        $permissions = Permission::all();
+        $permission = Permission::with('roles')->findOrFail($id);
+        $permission_roles = Permission::find($id)->roles;
         //dd($role);
-        return view('admin.roles.show', compact('role','role_users','role_permissions','permissions'));
+        return view('admin.permissions.show', compact('permission','permission_roles'));
     }
 
     /**
@@ -93,20 +84,16 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
-        $request->validate([
+         //dd($request->all());
+         $request->validate([
             'name' => 'required',
         ]);
-        $role = Role::findOrFail($id);
+        $item = Permission::findOrFail($id);
         $data = $request->all();
-        $permissionsId = $request->input('permissions_id');
+        $item->update($data);
+        Session::flash('success_update', 'you succesfully updated a permission.');
 
-        $role->update($data);
-        $role->permissions()->sync($permissionsId);
-
-        Session::flash('success_update', 'you succesfully updated a role.');
-
-        return redirect()->route('roles.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -118,9 +105,9 @@ class RolesController extends Controller
     public function destroy($id)
     {
          //dd($id);
-         $item = Role::findOrFail($id);
+         $item = Permission::findOrFail($id);
          //dd($item);
-         Role::destroy($id);
+         Permission::destroy($id);
          return response()->json(['status'=>$item->name.' has been deleted! ']);
     }
 }

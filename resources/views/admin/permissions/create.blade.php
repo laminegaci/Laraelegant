@@ -3,14 +3,14 @@
 @section('content')
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Add Role</h4>
+        <h4 class="text-themecolor">Add Permission</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
-                <li class="breadcrumb-item active">Add Role</li>
+                <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">permissions</a></li>
+                <li class="breadcrumb-item active">Add Permission</li>
             </ol>
 
         </div>
@@ -31,19 +31,11 @@
                     </ul>
                 </div>
                 @endif
-                <form method="POST" action="{{ route('roles.store') }}">
+                <form method="POST" action="{{ route('permissions.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Role Name</label>
+                        <label for="exampleInputEmail1">Permission Name</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="exampleInputFirst-Name" aria-describedby="" placeholder="Enter Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleSelectRole">Permissions</label>
-                        <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="permissions_id[]" id="exampleFormControlSelect1">
-                            @foreach($permissions as $permission)
-                                <option value="{{ $permission->id }}">{{ $permission->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -56,7 +48,7 @@
 
 @section('scripts')
 <script>
-    $(".js-example-basic-multiple").select2({
+    $(".js-example-placeholder-single").select2({
         placeholder: "Select a state",
         allowClear: true
     });
