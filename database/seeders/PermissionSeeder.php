@@ -14,7 +14,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['show_user','create_user','update_user','delete_user'];
+        $data = ['access_users','show_user','create_user','update_user','delete_user'];
         for ($i = 0; $i <= count($data)-1; $i++) {
             DB::table('permissions')->insert([
                 'name' => $data[$i],

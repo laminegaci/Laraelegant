@@ -19,6 +19,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('access_users')) {
+            abort('403');
+        }
         //dd(Auth::user()->roles);
         //dd(Auth::user()->roles()->where('name','admin')->first());
         $users = User::with('roles')->get();
@@ -32,7 +35,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('users_create')) {
+        if (! Gate::allows('create_user')) {
             abort('403');
         }
         $roles = Role::all();
@@ -78,6 +81,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        if (! Gate::allows('show_user')) {
+            abort('403');
+        }
         $roles = Role::all();
         $user = User::with('roles')->findOrFail($id);
         
@@ -92,7 +98,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort('404');
     }
 
     /**
@@ -104,6 +110,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Gate::allows('update_user')) {
+            abort('403');
+        }
          //dd($request->all());
          $request->validate([
             'name' => 'required',
@@ -130,6 +139,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        if (! Gate::allows('delete_user')) {
+            abort('403');
+        }
         //dd($id);
         $item = User::findOrFail($id);
         //dd($item);
@@ -149,6 +161,9 @@ class UsersController extends Controller
      */
     public function updateavatar(Request $request, $id)
     {
+        if (! Gate::allows('update_user')) {
+            abort('403');
+        }
         $request->validate([
             'avatar' => 'required|image',
         ]);

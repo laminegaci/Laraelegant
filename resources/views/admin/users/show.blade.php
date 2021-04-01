@@ -42,6 +42,8 @@
                                     @endforeach
                                 </h6>
                             </div>
+                            
+                            @can('update_user')
                             <form action="{{ route('users.updateavatar', $user->id) }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -54,10 +56,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
+                                    
                                   <input type="submit" class="form-control-file" id="exampleFormControlFile1" value="update avatar">
                                 </div>
                             </form>
+                            @endcan
                   
                     {{-- <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
                     <div class="row text-center justify-content-md-center">
@@ -134,11 +137,13 @@
                             </select>
                         </div>
                     </div> --}}
+                    @can('update_user')
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button class="btn btn-success">Update Profile</button>
                         </div>
                     </div>
+                    @endcan
                 </form>
             </div>
         </div>
@@ -166,11 +171,13 @@
                             <input type="email" name="email"  placeholder=""  class="form-control form-control-line" id="example-email">
                         </div>
                     </div>
+                    @can('update_user')
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button class="btn btn-success">Update Password</button>
                         </div>
                     </div>
+                    @endcan
                 </form>
             </div>
         </div>

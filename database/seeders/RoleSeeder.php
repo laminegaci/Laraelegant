@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,11 @@ class RoleSeeder extends Seeder
                 'name' => 'admin',
             ]);
             DB::table('roles')->insert([
+                'name' => 'Super-user',
+            ]);
+            DB::table('roles')->insert([
                 'name' => 'user',
             ]);
+            
     }
 }

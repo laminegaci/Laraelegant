@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="{{ route('users.index') }}">Users</a></li>
             </ol>
-            @can('users_create')
+            @can('create_user')
             <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Add new</button></a>
             @else
             <a href="{{ route('users.create') }}"><button type="button" class="btn btn-success d-none d-lg-block m-l-15" disabled> Add new</button></a>
@@ -44,7 +44,9 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>avatar</th>
+                                @can('show_user','delete_user')
                                 <th>Action</th>
+                                @endcan
                             </tr>
                         </thead>
 
@@ -64,9 +66,12 @@
                                 <td><img src="{{ asset('storage/'.$user->avatar) }}" alt="user_avatar" class="img-circle" width="30"></td>
 
                                 <td>
+                                    @can('show_user')
                                     <a href="{{ route('users.show', $user->id ) }}"><span class="label label-success">show</span></a>
+                                    @endcan
                                     {{-- <a href="{{ route('users.show', '1') }}"><span class="label label-warning">update</span></a> --}}
                                     {{-- <a href="{{ route('users.destroy', $user->id) }}" ><span class="label label-danger">deleteos</span></a> --}}
+                                    @can('delete_user')
                                     <a href="" onclick="event.preventDefault();">
                                        
                                             <button class="servideletebtn" type="submit" style="border: none;background:transparent;color:red;">
@@ -74,6 +79,7 @@
                                             </button>   
 
                                     </a>
+                                    @endcan
                                 </td>
                                 
 

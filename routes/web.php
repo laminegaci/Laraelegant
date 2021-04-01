@@ -16,37 +16,15 @@ use App\Models\Role;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
+    return view('welcome');
     //dd(User::has('roles')->get());
     // $users = User::whereHas('roles', function($query) {
     //     $query->where('name','admin');
     // })->get();
     // $collection = Auth::user()->roles()->pluck('name');
     // dd($collection->contains('user'));
-    
-    $user = Auth::user();
-    $roles = Role::with('permissions')->get();
-
-    $array1 = $user->roles->pluck('id')->toArray();
-    //dd($array1);
-    $array2 = $roles;
-    dd($array1,$array2);
-    dd(count(array_intersect($array1, $array2)));
-
-    foreach ($roles as $role) {
-        foreach ($role->permissions as $permission) {
-            $permissionArray[$permission->name][] = $role->id;
-        }
-    }
-    
-    foreach ($permissionArray as $title => $roles) {
-        Gate::define($title, function ($user) use ($roles){
-            return count(array_intersect($user->roles->pluck('id')->toArray(), $roles)) > 0;
-        });
-    }
-    //dd($permissionArray);
-
-
+    // $role = Role::find(1);
+    // $role->permissions()->attach([1,2,3,4,5]);
 });
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
