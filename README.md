@@ -3,7 +3,7 @@
 
 > A web Application Admin Panel
 
-![alt, text](https://www.screencast.com/users/MohamedLamine7473/folders/Default/media/6cc0b8f5-cbfb-4c73-aca0-ead2427d8425)
+![text](https://content.screencast.com/users/MohamedLamine7473/folders/for%20readme/media/6cc0b8f5-cbfb-4c73-aca0-ead2427d8425/Laraelegant-App.png)
 
 
 ## License
