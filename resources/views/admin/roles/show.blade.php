@@ -7,14 +7,14 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Profile</h4>
+        <h4 class="text-themecolor">{{ $role->name }} Role</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
-                <li class="breadcrumb-item active">{{ Auth::user()->name }}</li>
+                <li class="breadcrumb-item active"><span class="label label-info">{{$role->name}}</span></li>
             </ol>
 
         </div>
@@ -31,8 +31,9 @@
     <!-- Column -->
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card">
-            <div class="card-body">
-                <center class="m-t-30"> <img src="{{ asset('_admin/images/') }}" class="img-circle" alt="image" width="150" />
+            <div class="roles card-body">
+                <center class="m-t-30">
+                    <!-- <img src="{{ asset('_admin/images/') }}" class="img-circle" alt="image" width="150" /> -->
                     <h4 class="card-title m-t-10">{{ $role->name }}</h4>
                 </center>
             </div>
@@ -75,7 +76,7 @@
             <!-- Tab panes -->
             <div class="card-body">
                 <ul>
-                    <h3>Pemissions for {{$role->name}}</h3>
+                    <h3>Pemissions for the role <span class="label label-info">{{$role->name}}</span></h3>
                     @foreach ($role_permissions as $permission)
                         <li>{{$permission->name}}</li>
                     @endforeach
@@ -86,7 +87,7 @@
             <!-- Tab panes -->
             <div class="card-body">
                 <ul>
-                    <h3>Users have the role of {{$role->name}}</h3>
+                    <h3>Users have the role of <span class="label label-info">{{$role->name}}</span></h3>
                     @foreach ($role_users as $user)
                         <li>{{$user->name}}</li>
                     @endforeach

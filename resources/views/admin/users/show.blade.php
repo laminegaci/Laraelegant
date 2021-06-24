@@ -7,7 +7,7 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Profile</h4>
+        <h4 class="text-themecolor">User Profile</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
@@ -106,7 +106,7 @@
                         <div class="col-md-12">
                             <select class="form-control" name="role_id" id="exampleFormControlSelect1">
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option value="{{ $role->id }}" >{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -1,1 +1,14 @@
-// In this scss you can overwrite all our scss, we suggested you to add your scss into this, so whenever the update comes it will not affect your code.
+.roles.card-body,
+.permission.card-body {
+    background: #43c6ac; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #f8ffae,
+        #43c6ac
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #f8ffae,
+        #43c6ac
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
