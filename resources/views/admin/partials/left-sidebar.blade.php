@@ -12,9 +12,23 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li> <a class="waves-effect waves-dark" href="{{ route('dashboard') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
-                <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Users</span></a></li>
-                <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles</span></a></li>
-                <li> <a class="waves-effect waves-dark" href="{{ route('permissions.index') }}" aria-expanded="false"><i class="fas fa-hand-sparkles"></i><span class="hide-menu">Permissions</span></a></li>
+                @can('access_users')
+                    <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Users</span></a></li>
+                    @else
+                    <li> <a class="waves-effect waves-dark prevent_link" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Users</span></a></li>
+                @endcan
+                @can('access_roles')
+                    <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles</span></a></li>
+                    @else
+                    <li> <a class="waves-effect waves-dark prevent_link" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles restricted</span></a></li>
+                @endcan
+
+                @can('access_permissions')
+                    <li> <a class="waves-effect waves-dark" href="{{ route('permissions.index') }}" aria-expanded="false"><i class="fas fa-hand-sparkles"></i><span class="hide-menu">Permissions</span></a></li>
+                    @else
+                    <li> <a class="waves-effect waves-dark prevent_link" href="{{ route('permissions.index') }}" aria-expanded="false"><i class="fas fa-hand-sparkles"></i><span class="hide-menu">Permissions</span></a></li>
+                @endcan
+                
                 <!-- <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Tables</a></li>
                 <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu"></span>Icon</a></li>

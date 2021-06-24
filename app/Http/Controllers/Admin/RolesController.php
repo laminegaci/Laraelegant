@@ -18,6 +18,9 @@ class RolesController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('access_roles')) {
+            abort('403');
+        }
         $roles = Role::withCount('users','permissions')->get();
         //dd($roles);
         return view('admin.roles.index', compact('roles'));
@@ -30,6 +33,9 @@ class RolesController extends Controller
      */
     public function create()
     {
+        if (! Gate::allows('create_roles')) {
+            abort('403');
+        }
         $permissions = Permission::all();
         return view('admin.roles.create', compact('permissions'));
     }
@@ -66,6 +72,9 @@ class RolesController extends Controller
      */
     public function show($id)
     {
+        if (! Gate::allows('show_roles')) {
+            abort('403');
+        }
         $role = Role::findOrFail($id);
         $role_users = Role::find($id)->users;
         $role_permissions = Role::find($id)->permissions;
@@ -82,7 +91,7 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort('404');
     }
 
     /**
@@ -94,6 +103,9 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Gate::allows('update_roles')) {
+            abort('403');
+        }
         //dd($request->all());
         $request->validate([
             'name' => 'required',
@@ -118,6 +130,9 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
+        if (! Gate::allows('delete_roles')) {
+            abort('403');
+        }
          //dd($id);
          $item = Role::findOrFail($id);
          //dd($item);
