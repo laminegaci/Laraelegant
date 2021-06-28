@@ -54,7 +54,8 @@ class UserSeeder extends Seeder
             ]);
         }
         $users_id = User::pluck('id')->toArray();
-        $roles_id = Role::pluck('id')->toArray();
+        //$roles_id = Role::pluck('id')->toArray();
+        $roles_id = [2,3];
         $size = count($users_id);
         for ($i = 2; $i <= $size ; $i++) {
             DB::table('role_user')->insert([

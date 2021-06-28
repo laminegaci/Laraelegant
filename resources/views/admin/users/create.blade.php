@@ -8,8 +8,8 @@
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                 <li class="breadcrumb-item active">Add User</li>
             </ol>
 
@@ -36,14 +36,23 @@
                         <label for="exampleInputUsername">Username</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="exampleInputFirst-Name" aria-describedby="" placeholder="Enter Name">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleSelectRole">Role</label>
-                        <select class="js-example-placeholder-single js-states form-control" name="role_id" id="exampleFormControlSelect1">
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
+                        <div class="form-group">
+                            <label for="exampleSelectRole">Role</label>
+                            <select class="js-example-placeholder-single js-states form-control" name="role_id" id="exampleFormControlSelect1">
+                                @if(Auth::user()->isAdmin())
+                                    @foreach($roles as $role)
+                                    <option  value="{{ $role->id }}" >{{ $role->name }}</option>
+                                    @endforeach
+                                    
+                                @else
+                                    <option  value="2" >Super-User</option>
+                                    <option  value="3" >User</option>
+                                @endif
+                            </select>
+                        </div>
+                  
+                    
                     <div class="form-group">
                         <label for="exampleFormControlAvatar">Avatar</label>
                         <input type="file" class="form-control-file" name="avatar" value="{{ old('avatar') }}" id="avatar">

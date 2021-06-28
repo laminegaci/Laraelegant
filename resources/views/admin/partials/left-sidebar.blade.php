@@ -20,7 +20,7 @@
                 @can('access_roles')
                     <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles</span></a></li>
                     @else
-                    <li> <a class="waves-effect waves-dark prevent_link" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles restricted</span></a></li>
+                    <li> <a class="waves-effect waves-dark prevent_link" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fas fa-candy-cane"></i></i><span class="hide-menu">Roles</span></a></li>
                 @endcan
 
                 @can('access_permissions')

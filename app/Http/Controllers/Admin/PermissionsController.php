@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Permission;
 use Session;
+use Illuminate\Support\Facades\Gate;
 
 class PermissionsController extends Controller
 {
@@ -16,6 +17,9 @@ class PermissionsController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('access_permissions')) {
+            abort('403');
+        }
         $permissions = Permission::withCount('roles')->get();
         //dd($roles);
         return view('admin.permissions.index', compact('permissions'));
@@ -28,6 +32,9 @@ class PermissionsController extends Controller
      */
     public function create()
     {
+        if (! Gate::allows('create_permissions')) {
+            abort('403');
+        }
         return view('admin.permissions.create');
     }
 
@@ -39,6 +46,9 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('create_permissions')) {
+            abort('403');
+        }
         //dd($request->all());
         $request->validate([
             'name' => 'required'
@@ -58,6 +68,9 @@ class PermissionsController extends Controller
      */
     public function show($id)
     {
+        if (! Gate::allows('show_permissions')) {
+            abort('403');
+        }
         $permission = Permission::with('roles')->findOrFail($id);
         $permission_roles = Permission::find($id)->roles;
         //dd($role);
@@ -72,7 +85,7 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort('404');
     }
 
     /**
@@ -84,6 +97,9 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Gate::allows('update_permissions')) {
+            abort('403');
+        }
          //dd($request->all());
          $request->validate([
             'name' => 'required',
@@ -104,6 +120,9 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
+        if (! Gate::allows('delete_permissions')) {
+            abort('403');
+        }
          //dd($id);
          $item = Permission::findOrFail($id);
          //dd($item);

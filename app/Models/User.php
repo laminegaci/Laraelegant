@@ -59,9 +59,40 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role == '1';
-    }   
+        $user = Auth::user();
+        foreach ($user->roles as $role) {
+            $role = $role->pivot->role_id;
+        }
+        return $role == '1';
+    }
 
+    //return 
+    public function isNotAdmin()
+    {
+        $user = Auth::user();
+        foreach ($user->roles as $role) {
+            $role = $role->pivot->role_id;
+        }
+        return $role != '1';
+    }  
+
+    //return true if howa li rah mlogui
+    public function actuallyLogedIn($id)
+    {
+        return Auth::user()->id == $id;
+    }    
+
+    //function retrieve role by id
+    public function roleById($id)
+    {
+        $user = User::find($id);
+        foreach ($user->roles as $role){
+            $roleName = $role->name;
+        }
+        return $roleName;
+    }
+
+    //retrive the role of user
     public function hasAnyRole(string $role){
         $collection = Auth::user()->roles()->pluck('name');
         if($collection->contains($role)){

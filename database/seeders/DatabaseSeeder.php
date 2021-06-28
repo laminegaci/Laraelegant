@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call([UserSeeder::class]);
         $this->call([PermissionSeeder::class]);  
         $role = Role::find(1);
-        $role->permissions()->attach([1,2,3,4,5,6,7,8,9,10]);
+        $role->permissions()->attach([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
         $role = Role::find(2);
         $role->permissions()->attach([1,2,3]);
+        $role = Role::find(3);
+        $role->permissions()->attach([1]);
 
     }
 }

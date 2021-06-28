@@ -35,6 +35,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('permissions', 'Admin\PermissionsController');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

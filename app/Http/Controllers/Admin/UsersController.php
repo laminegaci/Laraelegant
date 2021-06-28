@@ -51,7 +51,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('users_create')) {
+        if (! Gate::allows('create_user')) {
             abort('403');
         }
         //dd($request->all());
@@ -81,8 +81,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        if (! Gate::allows('show_user')) {
-            abort('403');
+        if (! Auth::user()->actuallyLogedIn($id)) {
+            if(! Gate::allows('show_user'))
+            {
+                abort('403');
+            }
         }
         $roles = Role::all();
         $user = User::with('roles')->findOrFail($id);
@@ -110,8 +113,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (! Gate::allows('update_user')) {
-            abort('403');
+        if (! Auth::user()->actuallyLogedIn($id)) {
+            if(! Gate::allows('update_user'))
+            {
+                abort('403');
+            }
         }
          //dd($request->all());
          $request->validate([
@@ -161,9 +167,6 @@ class UsersController extends Controller
      */
     public function updateavatar(Request $request, $id)
     {
-        if (! Gate::allows('update_user')) {
-            abort('403');
-        }
         $request->validate([
             'avatar' => 'required|image',
         ]);

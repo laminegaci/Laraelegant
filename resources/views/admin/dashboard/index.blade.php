@@ -53,8 +53,30 @@
         <div class="card mb-3 widget-content bg-grow-early">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
-                    <div class="widget-heading">Followers</div>
-                    <div class="widget-subheading">People Interested</div>
+                    <div class="widget-heading">Admin</div>
+                    <div class="widget-subheading">1 User of Role of Admin</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span>46%</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 widget-content bg-grow-early">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Super-user</div>
+                    <div class="widget-subheading">5 Users of Role of Super-user</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span>46%</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 widget-content bg-grow-early">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">User</div>
+                    <div class="widget-subheading">10 Users of Role of User</div>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-white"><span>46%</span></div>
