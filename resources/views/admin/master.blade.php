@@ -14,7 +14,7 @@
     <title>LaraElegant Admin Panel - The Ultimate admin Panel</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
-    <!-- <link href="../assets/node_modules/morrisjs/morris.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!--c3 plugins CSS -->
     <!-- <link href="../assets/node_modules/c3-master/c3.min.css" rel="stylesheet"> -->
     <!-- Custom CSS -->
@@ -41,6 +41,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+    
+
 
 </head>
 
@@ -96,6 +99,10 @@
 
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
     @yield('scripts')
     <script>
@@ -106,13 +113,8 @@
             });
         });
     </script>
-    {{-- <script>
-            $('document').ready(function() {
-                alert('ok');
-            })
-        </script> --}}
 
-    <!-- slimscrollbar scrollbar JavaScript -->
+<!-- slimscrollbar scrollbar JavaScript -->
     <!-- <script src="dist/js/perfect-scrollbar.jquery.min.js"></script> -->
     <!--Wave Effects -->
     <!-- <script src="dist/js/waves.js"></script> -->
@@ -121,13 +123,8 @@
     <!--Custom JavaScript -->
     <!-- <script src="dist/js/custom.min.js"></script> -->
     <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!--morris JavaScript -->
 
-    <!-- <script src="../assets/node_modules/raphael/raphael-min.js"></script>
-        <script src="../assets/node_modules/morrisjs/morris.min.js"></script>
-        <script src="../assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!-- <script src="../assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 
         <script src="../assets/node_modules/d3/d3.min.js"></script>
         <script src="../assets/node_modules/c3-master/c3.min.js"></script>

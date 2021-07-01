@@ -23,29 +23,17 @@
 <!-- End Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
 <div class="row">
-    <div class="col-md-6 col-xl-4">
-        <div class="card mb-3 widget-content bg-midnight-bloom">
+    <div class="col-md-6 col-xl-8">
+        <div class="card mb-3 widget-content">
             <div class="widget-content-wrapper text-white">
-                <div class="widget-content-left">
+                {{-- <div class="widget-content-left">
                     <div class="widget-heading">Total Orders</div>
                     <div class="widget-subheading">Last year expenses</div>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-white"><span>1896</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-        <div class="card mb-3 widget-content bg-arielle-smile">
-            <div class="widget-content-wrapper text-white">
-                <div class="widget-content-left">
-                    <div class="widget-heading">Clients</div>
-                    <div class="widget-subheading">Total Clients Profit</div>
-                </div>
-                <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>$ 568</span></div>
-                </div>
+                </div> --}}
+                <div id="myfirstchart" style="height: 235px;"></div>
             </div>
         </div>
     </div>
@@ -101,7 +89,7 @@
 <!-- ============================================================== -->
 <!-- Yearly Sales -->
 <!-- ============================================================== -->
-<!-- <div class="row">
+<div class="row">
     <div class="col-lg-8">
         <div class="card oh">
             <div class="card-body">
@@ -181,11 +169,11 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 <!-- ============================================================== -->
 <!-- News -->
 <!-- ============================================================== -->
-<!-- <div class="row">
+<div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -274,11 +262,11 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 <!-- ============================================================== -->
 <!-- To do chat and message -->
 <!-- ============================================================== -->
-<!-- <div class="row">
+<div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
@@ -378,7 +366,32 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 
 
+@endsection
+
+@section('scripts')
+<script>
+    new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    { year: '2008', value: 20 },
+    { year: '2009', value: 10 },
+    { year: '2010', value: 5 },
+    { year: '2011', value: 5 },
+    { year: '2012', value: 20 }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'year',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value']
+});
+</script>
 @endsection
