@@ -1,40 +1,28 @@
 // Fonts
 //@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
-
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 //fontawesome
 $fa-font-path: "../webfonts";
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '~@fortawesome/fontawesome-free/scss/solid.scss';
-@import '~@fortawesome/fontawesome-free/scss/regular.scss';
-@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
 
 /*
+template styles
 Template Name: Admin Template
 Author: Niravjoshi / Wrappixel
 File: scss
 */
 
-@import 'variable';  
-@import 'colors/default-dark'; 
+@import "variable";
+@import "colors/default-dark";
 //This is the core files
-@import 'core/core';
-@import 'widgets/widgets';
-@import 'responsive';
-
+@import "core/core";
+@import "widgets/widgets";
+@import "responsive";
+@import "dashboard";
 
 //In This scss you can write your scss
-@import 'custom'; 
-
-
-// Import Bootstrap source files
-//@import "../../../assets/node_modules/bootstrap/scss/bootstrap";  3andi npm
-
-//This is for the icons
-//@import '../../../assets/icons/font-awesome/css/font-awesome.min.css';   3andi npm
-//@import '../../../assets/icons/themify-icons/themify-icons.css';    3andi npm
+@import "custom";
