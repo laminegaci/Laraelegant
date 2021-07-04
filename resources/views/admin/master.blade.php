@@ -64,6 +64,9 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         @include('admin.partials.left-sidebar')
+        <!-- right Sidebar - style you can find in right-sidebar.scss  -->
+        <!-- ============================================================== -->
+        @include('admin.partials.right-sidebar')
 
 
         <!-- Page wrapper  -->
@@ -112,7 +115,22 @@
                 alert('You clicked the link.');
             });
         });
+
+        var toggleBtn = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('.right-sidebare');
+        toggleBtn.addEventListener('click', function() {
+            toggleBtn.classList.toggle('is-closed');
+            sidebar.classList.toggle('is-closed');
+        })
     </script>
+<<<<<<< HEAD
+=======
+        {{-- <script>
+            $('document').ready(function() {
+                alert('ok');
+            })
+        </script> --}}
+>>>>>>> cbdbd05e629153ef5133ccafc260b5255c8273a5
 
 <!-- slimscrollbar scrollbar JavaScript -->
     <!-- <script src="dist/js/perfect-scrollbar.jquery.min.js"></script> -->

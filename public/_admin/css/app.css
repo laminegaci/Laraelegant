@@ -21520,6 +21520,75 @@ sidebar navigation
   transform: rotate(-135deg) translate(0, -50%);
 }
 
+/*******************
+Main sidebar
+******************/
+
+.right-sidebare {
+  position: fixed;
+  width: 275px;
+  height: 100vh;
+  right: 0;
+  top: 66px;
+  background-color: #fff;
+  z-index: 51;
+  transition: 0.5s;
+  padding: 5px;
+  background: #e7f5ff;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1864ab, #e7f5ff);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.right-sidebare > .card {
+  margin-bottom: 3px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.right-sidebare > .card.profile {
+  display: flex;
+  align-items: center;
+}
+
+.right-sidebare > .card > .chage-sidebar-color {
+  display: flex;
+  justify-content: center;
+}
+
+.right-sidebare > .card > .chage-sidebar-color > .color {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.right-sidebare.is-closed {
+  transform: translateX(19em);
+}
+
+.sidebar-toggle {
+  position: fixed;
+  cursor: pointer;
+  top: 20px;
+  right: 270px;
+  z-index: 51;
+  border: 4px solid #fff;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #edf1f5;
+  transform: rotate(45deg);
+  transition: 0.7s;
+}
+
+.sidebar-toggle.is-closed {
+  transform: rotate(0deg);
+}
+
 /* perfect-scrollbar v0.7.1 */
 
 .ps {
