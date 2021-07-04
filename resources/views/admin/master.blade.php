@@ -12,28 +12,20 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
     <title>LaraElegant Admin Panel - The Ultimate admin Panel</title>
-    <!-- This page CSS -->
+    
     <!-- chartist CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!--c3 plugins CSS -->
     <!-- <link href="../assets/node_modules/c3-master/c3.min.css" rel="stylesheet"> -->
-    <!-- Custom CSS -->
+
+    <!-- app CSS -->
     <link href="{{ asset('_admin/css/app.css') }}" rel="stylesheet">
-    <!-- Dashboard 1 Page CSS -->
-    <link href="{{ asset('_admin/css/pages/dashboard1.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('_admin/icons/themify-icons/themify-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('_admin/icons/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
     <!-- toastr css -->
     <link rel="stylesheet" href="{{ asset('_admin/css/toastr.min.css') }}">
-
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
     <!-- datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -99,7 +91,6 @@
     
     <!-- datatable -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     
@@ -124,6 +115,7 @@
         })
     </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         {{-- <script>
             $('document').ready(function() {
@@ -133,6 +125,9 @@
 >>>>>>> cbdbd05e629153ef5133ccafc260b5255c8273a5
 
 <!-- slimscrollbar scrollbar JavaScript -->
+=======
+    <!-- slimscrollbar scrollbar JavaScript -->
+>>>>>>> deleteSomeScssFiles
     <!-- <script src="dist/js/perfect-scrollbar.jquery.min.js"></script> -->
     <!--Wave Effects -->
     <!-- <script src="dist/js/waves.js"></script> -->
