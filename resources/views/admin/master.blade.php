@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
     <title>LaraElegant Admin Panel - The Ultimate admin Panel</title>
     
-    <!-- chartist CSS -->
+    <!-- chart Morris CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!--c3 plugins CSS -->
     <!-- <link href="../assets/node_modules/c3-master/c3.min.css" rel="stylesheet"> -->
@@ -26,6 +26,8 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <!-- datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    {{-- calendar --}}
+    <link rel="stylesheet" href="{{ asset('_admin/Calendar/calendar.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -93,7 +95,8 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    
+    {{-- calendar js --}}
+    <script src="{{ asset('_admin/Calendar/calendar.js') }}"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -114,20 +117,8 @@
             sidebar.classList.toggle('is-closed');
         })
     </script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        {{-- <script>
-            $('document').ready(function() {
-                alert('ok');
-            })
-        </script> --}}
->>>>>>> cbdbd05e629153ef5133ccafc260b5255c8273a5
 
-<!-- slimscrollbar scrollbar JavaScript -->
-=======
     <!-- slimscrollbar scrollbar JavaScript -->
->>>>>>> deleteSomeScssFiles
     <!-- <script src="dist/js/perfect-scrollbar.jquery.min.js"></script> -->
     <!--Wave Effects -->
     <!-- <script src="dist/js/waves.js"></script> -->

@@ -25,6 +25,7 @@ class UsersController extends Controller
         //dd(Auth::user()->roles);
         //dd(Auth::user()->roles()->where('name','admin')->first());
         $users = User::with('roles')->get();
+        //dd($users);
         return view('admin.users.index', compact('users'));
     }
 

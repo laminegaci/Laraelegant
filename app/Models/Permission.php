@@ -22,4 +22,10 @@ class Permission extends Model
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+        //number of permissions
+        public static function NumberOfPermissions()
+        {
+            return $permissions = Permission::count();
+        }
 }

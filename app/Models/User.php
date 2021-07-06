@@ -92,6 +92,12 @@ class User extends Authenticatable
         return $roleName;
     }
 
+    //number of users
+    public static function NumberOfUsers()
+    {
+        return $users = User::count();
+    }
+    
     //retrive the role of user
     public function hasAnyRole(string $role){
         $collection = Auth::user()->roles()->pluck('name');

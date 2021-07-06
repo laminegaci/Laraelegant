@@ -21,7 +21,7 @@ class PermissionsController extends Controller
             abort('403');
         }
         $permissions = Permission::withCount('roles')->get();
-        //dd($roles);
+        //dd($permissions);
         return view('admin.permissions.index', compact('permissions'));
     }
 

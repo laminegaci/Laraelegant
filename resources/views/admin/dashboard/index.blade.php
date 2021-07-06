@@ -1,7 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
 <!-- ============================================================== -->
 <!-- Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
@@ -9,15 +8,6 @@
     <div class="col-md-5 align-self-center">
         <h4 class="text-themecolor">Dashboard</h4>
     </div>
-    <!-- <div class="col-md-7 align-self-center text-right">
-        <div class="d-flex justify-content-end align-items-center">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-            <a class="btn btn-success d-none d-lg-block m-l-15" href="https://wrappixel.com/templates/elegant-admin/"> Upgrade To Pro</a>
-        </div>
-    </div> -->
 </div>
 <!-- ============================================================== -->
 <!-- End Bread crumb and right sidebar toggle -->
@@ -25,7 +15,10 @@
 <div class="row">
     <div class="col-md-6 col-xl-8">
         <div class="card mb-3 widget-content">
-            <div class="widget-content-wrapper text-white">
+            <div>
+                <h3>' {{App\Models\User::NumberOfUsers()}} ' Users</h3>
+            </div>
+            <div class="widget-content-wrapper text-white" style="display: flex;justify-content:center;">
                 {{-- <div class="widget-content-left">
                     <div class="widget-heading">Total Orders</div>
                     <div class="widget-subheading">Last year expenses</div>
@@ -33,23 +26,32 @@
                 <div class="widget-content-right">
                     <div class="widget-numbers text-white"><span>1896</span></div>
                 </div> --}}
-                <div id="myfirstchart" style="height: 235px;"></div>
+                {{-- <div id="myfirstchart" style="width:100%;height: 222px;"></div> --}}
+
+                    <div style="min-height: 300px">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    
+                    
             </div>
         </div>
     </div>
     <div class="col-md-6 col-xl-4">
+        @foreach($roles as $role)
         <div class="card mb-3 widget-content bg-grow-early">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
-                    <div class="widget-heading">Admin</div>
-                    <div class="widget-subheading">1 User of Role of Admin</div>
+                    <div class="widget-heading">{{$role->name}} ({{$role->users_count}})</div>
+                    <div class="widget-subheading">{{$role->users_count}} User of Role of <strong>{{$role->name}}</strong></div>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-white"><span>46%</span></div>
                 </div>
             </div>
         </div>
-        <div class="card mb-3 widget-content bg-grow-early">
+        @endforeach
+
+        {{-- <div class="card mb-3 widget-content bg-grow-early">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
                     <div class="widget-heading">Super-user</div>
@@ -70,7 +72,7 @@
                     <div class="widget-numbers text-white"><span>46%</span></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
         <div class="card mb-3 widget-content bg-premium-dark">
@@ -86,10 +88,52 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card" style="height: 100%">
+            {{-- <div class="card-body">
+                <h4 class="card-title">Calendar</h4>
+            </div> --}}
+            <!-- calendar -->
+            <!-- ============================================================== -->
+            @include('admin.partials.calendar')
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card" style="height: 100%">
+            <div class="card-body">
+                <h5 class="card-title">Roles ( 3 )</h5>
+                <div class="message-box">
+                    <div class="message-widget message-scroll">
+                        <a href="javascript:void(0)">
+                            <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #fab005"></i><span class="profile-status online pull-right"></span> </div>
+                            <div class="mail-contnet">
+                                <h5>Admin</h5> Can :  <span class="label label-info">create</span> 
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #ced4da"></i> <span class="profile-status busy pull-right"></span> </div>
+                            <div class="mail-contnet">
+                                <h5>Super-User</h5> Can : <span class="label label-info">create</span> 
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #da77f2"></i> <span class="profile-status away pull-right"></span> </div>
+                            <div class="mail-contnet">
+                                <h5>User</h5> Can :  <span class="label label-info">create</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 <!-- ============================================================== -->
 <!-- Yearly Sales -->
 <!-- ============================================================== -->
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-8">
         <div class="card oh">
             <div class="card-body">
@@ -169,11 +213,11 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  --}}
 <!-- ============================================================== -->
 <!-- News -->
 <!-- ============================================================== -->
-<div class="row">
+{{-- <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -262,11 +306,11 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  --}}
 <!-- ============================================================== -->
 <!-- To do chat and message -->
 <!-- ============================================================== -->
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
@@ -366,32 +410,38 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  --}}
 
 
 @endsection
 
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js" integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    new Morris.Line({
-  // ID of the element in which to draw the chart.
-  element: 'myfirstchart',
-  // Chart data records -- each entry in this array corresponds to a point on
-  // the chart.
-  data: [
-    { year: '2008', value: 20 },
-    { year: '2009', value: 10 },
-    { year: '2010', value: 5 },
-    { year: '2011', value: 5 },
-    { year: '2012', value: 20 }
+const data = {
+  labels: [
+    'Admin',
+    'Super-User',
+    'User'
   ],
-  // The name of the data record attribute that contains x-values.
-  xkey: 'year',
-  // A list of names of data record attributes that contain y-values.
-  ykeys: ['value'],
-  // Labels for the ykeys -- will be displayed when you hover over the
-  // chart.
-  labels: ['Value']
-});
+  datasets: [{
+    label: 'My First Dataset',
+    data: [10, 20, 70],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+const config = {
+  type: 'doughnut',
+  data: data,
+};
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
 </script>
 @endsection

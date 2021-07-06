@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class DashboardControler extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard.index');
+        $roles = Role::withCount('users','permissions')->get();
+
+        return view('admin.dashboard.index', compact('roles'));
     }
 }

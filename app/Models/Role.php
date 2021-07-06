@@ -27,4 +27,16 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class)->withTimestamps();
     }
+
+    //number of Roles
+    public static function NumberOfRoles()
+    {
+        return $roles = Role::count();
+    }
+
+    //number of users by role name
+    public static function NumberOfUsersByRoleName()
+    {
+        return $roles = Role::withCount('users');
+    }
 }

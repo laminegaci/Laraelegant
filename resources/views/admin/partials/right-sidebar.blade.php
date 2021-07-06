@@ -27,9 +27,3 @@
 <button class="sidebar-toggle">
     <i class="fa fa-plus icon"></i>
 </button>
-
-<script>
-            $('document').ready(function() {
-                alert('ok');
-            })
-        </script>
