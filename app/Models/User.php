@@ -97,6 +97,12 @@ class User extends Authenticatable
     {
         return $users = User::count();
     }
+
+    //number of users
+    public static function Pourcentage($totale,$second)
+    {
+        return round($second * 100 / $totale,1);
+    }
     
     //retrive the role of user
     public function hasAnyRole(string $role){

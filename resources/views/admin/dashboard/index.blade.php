@@ -37,6 +37,7 @@
         </div>
     </div>
     <div class="col-md-6 col-xl-4">
+        <h5>type of User</h5>
         @foreach($roles as $role)
         <div class="card mb-3 widget-content bg-grow-early">
             <div class="widget-content-wrapper text-white">
@@ -45,7 +46,7 @@
                     <div class="widget-subheading">{{$role->users_count}} User of Role of <strong>{{$role->name}}</strong></div>
                 </div>
                 <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>46%</span></div>
+                    <div class="widget-numbers text-white"><span>{{App\Models\User::Pourcentage(App\Models\User::NumberOfUsers(),$role->users_count)}} %</span></div>
                 </div>
             </div>
         </div>
@@ -106,24 +107,19 @@
                 <h5 class="card-title">Roles ( 3 )</h5>
                 <div class="message-box">
                     <div class="message-widget message-scroll">
+                        @foreach ($roles as $role)
                         <a href="javascript:void(0)">
                             <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #fab005"></i><span class="profile-status online pull-right"></span> </div>
                             <div class="mail-contnet">
-                                <h5>Admin</h5> Can :  <span class="label label-info">create</span> 
+                                <h5>{{$role->name}}</h5> Can : 
+                                @foreach($role->permissions as $permission)
+                                    <span class="label label-info">{{$permission->name}}</span>
+                                @endforeach
+                                 
                             </div>
                         </a>
-                        <a href="javascript:void(0)">
-                            <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #ced4da"></i> <span class="profile-status busy pull-right"></span> </div>
-                            <div class="mail-contnet">
-                                <h5>Super-User</h5> Can : <span class="label label-info">create</span> 
-                            </div>
-                        </a>
-                        <a href="javascript:void(0)">
-                            <div class="user-img"> <i class="fas fa-crown fa-2x" style="color: #da77f2"></i> <span class="profile-status away pull-right"></span> </div>
-                            <div class="mail-contnet">
-                                <h5>User</h5> Can :  <span class="label label-info">create</span>
-                            </div>
-                        </a>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
@@ -416,17 +412,23 @@
 @endsection
 
 @section('scripts')
+    {{-- calendar js --}}
+    <script src="{{ asset('_admin/Calendar/calendar.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js" integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 const data = {
   labels: [
-    'Admin',
-    'Super-User',
-    'User'
+    @foreach($roles as $role)
+    "{{ $role->name }}",
+    @endforeach
   ],
   datasets: [{
     label: 'My First Dataset',
-    data: [10, 20, 70],
+    data: [
+        @foreach($roles as $role)
+        "{{ App\Models\User::Pourcentage(App\Models\User::NumberOfUsers(),$role->users_count) }}",
+        @endforeach
+    ],
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',

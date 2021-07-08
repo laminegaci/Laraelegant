@@ -33,6 +33,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::PUT('users/updateavatar/{id}', 'Admin\UsersController@updateavatar')->name('users.updateavatar');
     Route::resource('roles', 'Admin\RolesController');
     Route::resource('permissions', 'Admin\PermissionsController');
+    Route::get('fullcalendar', 'Admin\fullCalendar@index')->name('fullCalendar');
 });
 
 Auth::routes(['register' => false]);

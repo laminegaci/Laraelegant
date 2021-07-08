@@ -10,8 +10,8 @@ class DashboardControler extends Controller
 {
     public function index()
     {
-        $roles = Role::withCount('users','permissions')->get();
-
+        $roles = Role::withCount('users','permissions')->with('users')->with('permissions')->get();
+        //dd($roles);
         return view('admin.dashboard.index', compact('roles'));
     }
 }

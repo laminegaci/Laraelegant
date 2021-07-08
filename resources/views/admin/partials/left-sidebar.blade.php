@@ -12,6 +12,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li> <a class="waves-effect waves-dark" href="{{ route('dashboard') }}" aria-expanded="false"><i class="fas fa-tachometer-alt"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('fullCalendar') }}" aria-expanded="false"><i class="fas fa-calendar-alt"></i><span class="hide-menu">fullCalendar</span></a></li>
                 @can('access_users')
                     <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Users</span></a></li>
                     @else
