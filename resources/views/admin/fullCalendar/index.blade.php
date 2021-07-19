@@ -42,4 +42,105 @@
 
 @section('scripts')
 
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('fullCalendar');
+      
+      let calendar = new FullCalendar.Calendar(calendarEl, {
+        //plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        themeSystem: 'bootstrap',
+        height:600,
+        buttonText: {
+            today:    "Aujourd'hui",
+            month:    'Mois',
+            week:     'Semaine',
+            day:      'Jour',
+            list:     'Liste'
+        },
+        navLinks : true,
+        eventLimit: true,
+        events : '/admin/fullcalendar/events',
+        selectable:true,
+        selectHelper: true, 
+        select:function(selectionInfo,start, end, allDay)
+        {
+            var title = prompt('Event Title:');
+
+            if(title)
+            {
+                let start = selectionInfo.start.getFullYear() + '-' + (selectionInfo.start.getMonth() + 1) + '-' + selectionInfo.start.getDate();
+                let end = selectionInfo.end.getFullYear() + '-' + (selectionInfo.end.getMonth() + 1) + '-' + selectionInfo.end.getDate();
+
+                $.ajax({
+                    url:"/admin/fullcalendar/action",
+                    type:"POST",
+                    data:{
+                        title: title,
+                        start: start,
+                        end: end,
+                        type: 'add'
+                    },
+                    success:function(data)
+                    {
+                        calendar.refetchEvents();
+                        swal({
+                            title: "Good job!",
+                            text: "Event created successfully",
+                            icon: "success",
+                        });
+                    }
+                })
+            }
+        },
+        editable :true,
+        eventResize: function(event, delta)
+        {
+            var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD');
+            var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD');
+            var title = event.title;
+            var id = event.id;
+            $.ajax({
+                url:"/admin/fullcalendar/action",
+                type:"POST",
+                data:{
+                    title: title,
+                    start: start,
+                    end: end,
+                    id: id,
+                    type: 'update'
+                },
+                success:function(response)
+                {
+                    calendar.refetchEvents();
+                        swal({
+                            title: "Good job!",
+                            text: "Event updated successfully",
+                            icon: "success",
+                        });
+                }
+            })
+        },
+        
+      });
+      calendar.setOption('locale','fr');
+
+      calendar.render();
+    });
+
+</script>
+
 @endsection

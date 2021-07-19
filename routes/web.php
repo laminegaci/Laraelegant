@@ -33,9 +33,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::PUT('users/updateavatar/{id}', 'Admin\UsersController@updateavatar')->name('users.updateavatar');
     Route::resource('roles', 'Admin\RolesController');
     Route::resource('permissions', 'Admin\PermissionsController');
-    Route::get('fullcalendar', 'Admin\fullCalendar@index')->name('fullCalendar');
+    Route::get('fullcalendar', 'Admin\FullCalendarController@index')->name('fullCalendar');
+    Route::POST('fullcalendar/action', 'Admin\FullCalendarController@action')->name('fullCalendar.action');
+    Route::get('fullcalendar/events', 'Admin\FullCalendarController@events')->name('fullCalendar.events');
 });
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

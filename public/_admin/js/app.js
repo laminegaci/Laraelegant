@@ -37672,17 +37672,6 @@ module.exports = function(module) {
 /*!*******************************************!*\
   !*** ./resources/js/admin_scripts/app.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ./bootstrap */ "./resources/js/admin_scripts/bootstrap.js");
-
-/***/ }),
-
-/***/ "./resources/js/admin_scripts/bootstrap.js":
-/*!*************************************************!*\
-  !*** ./resources/js/admin_scripts/bootstrap.js ***!
-  \*************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37690,6 +37679,19 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/admin_scripts/bootstrap.j
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_0__);
+__webpack_require__(/*! ./bootstrap */ "./resources/js/admin_scripts/bootstrap.js");
+
+
+
+/***/ }),
+
+/***/ "./resources/js/admin_scripts/bootstrap.js":
+/*!*************************************************!*\
+  !*** ./resources/js/admin_scripts/bootstrap.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -37712,7 +37714,6 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
